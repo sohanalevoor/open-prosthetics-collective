@@ -1,0 +1,15 @@
+# OpenSCAD & CAD backup files
+*.bak
+*~
+*.csg
+
+# Slicer temporary & G-code files
+*.gcode
+*.bgcode
+*.ufp
+
+# OS & Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
