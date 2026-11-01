@@ -1,4 +1,4 @@
-# Open Prosthetics Collective — Parametric Full-Body Assistive CAD Suite
+# Open Prosthetics Collective — Parametric Full-Body Assistive CADs
 
 An open-source, parametric 3D-printable prosthetics repository created by **@sohanalevoor** that expands beyond traditional wrist-powered upper-limb devices into **partial-hand finger prosthetics**, **lower-limb transtibial mobility systems**, and **modular daily-living tool adapters**.
 
