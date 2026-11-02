@@ -2,7 +2,7 @@
 //  Modular Transtibial (Below-Knee) & ESAR Foot Prosthetic — OpenSCAD Model
 // =============================================================================
 //  A parametric, 3D-printable lower-limb prosthetic architecture designed for
-//  humanitarian check-socket fitting and light-to-moderate ambulation. Combines:
+//  educational geometry exploration; not validated for fitting or ambulation. Combines:
 //   1. Patellar-Tendon-Bearing (PTB) anatomical check socket with patellar bar
 //      indentation, fibular head relief, and posterior popliteal flare.
 //   2. Breathable TPU 95A snap-in comfort liner shell.
@@ -16,10 +16,9 @@
 //   * Split-toe keel geometry provides passive inversion/eversion on uneven
 //     ground without heavy mechanical ankle joints.
 //
-//  SAFETY: Experimental open-source lower-limb assistive CAD. Dynamic weight
-//  bearing requires high-toughness engineering filaments (PA-CF, PETG, TPU 95A)
-//  and static/cyclic load verification under supervision of a certified
-//  prosthetist (CPO).
+//  SAFETY: Experimental educational geometry only. No load rating, structural
+//  validation, fatigue testing, or clinical fitting evidence is included.
+//  Do not use these models for weight-bearing activity.
 // =============================================================================
 
 /* [Part to render] */
@@ -39,7 +38,7 @@ knee_to_floor_height = 460;
 foot_length = 250;
 // Prosthetic foot forefoot width (mm)
 foot_width = 88;
-// Recipient body mass for keel leaf-spring thickness calculation (kg)
+// Design mass input for an unvalidated thickness heuristic (kg); not a rating
 body_mass_kg = 68;
 
 /* [Structural & Hardware Parameters (Never Scaled)] */
@@ -80,7 +79,7 @@ r_dist_in  = (distal_stump_circ / (2 * PI)) + liner_thickness;
 r_prox_out = r_prox_in + socket_wall;
 r_dist_out = r_dist_in + socket_wall;
 
-// Leaf spring thickness scaled by body mass (8.0 mm at 65 kg baseline)
+// Unvalidated thickness heuristic (8.0 mm at 65 kg input); not a strength calculation
 keel_t     = max(6.5, min(13.0, 8.0 * pow(body_mass_kg / 65.0, 0.38)));
 foot_h     = 68;
 adapter_h  = 42;
@@ -294,7 +293,7 @@ module report() {
   echo(str("=== Modular Transtibial & ESAR Foot Prosthetic (", side, ") ==="));
   echo(str("PTB Socket inner dia (P/D): ", round(2 * (r_prox_in - liner_thickness)), " / ", round(2 * (r_dist_in - liner_thickness)), " mm"));
   echo(str("30 mm Pylon cut length    : ", round(pylon_len), " mm (for ", knee_to_floor_height, " mm knee-to-floor height)"));
-  echo(str("ESAR Foot L x W x Keel T  : ", foot_length, " x ", foot_width, " x ", round(keel_t * 10) / 10, " mm (", body_mass_kg, " kg rating)"));
+  echo(str("ESAR Foot L x W x Keel T  : ", foot_length, " x ", foot_width, " x ", round(keel_t * 10) / 10, " mm (", body_mass_kg, " kg design input; NOT a load rating)"));
 }
 report();
 
